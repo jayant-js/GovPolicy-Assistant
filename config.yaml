@@ -48,5 +48,3 @@ deployment:
 
 logging:
   level: "INFO"
-  log_to_file: true
-  file_path: "logs/app.log" 
