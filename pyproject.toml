@@ -1,0 +1,20 @@
+[project]
+name = "policyrag"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ipywidgets>=8.1.7",
+    "langchain>=0.3.27",
+    "langchain-community>=0.3.27",
+    "langchain-groq>=0.3.7",
+    "langchain-huggingface>=0.3.1",
+    "pdfminer-six>=20250506",
+    "pi-heif>=1.1.0",
+    "python-dotenv>=1.1.1",
+    "pyyaml>=6.0.2",
+    "unstructured[local-inference]>=0.18.13",
+    "unstructured-inference>=1.0.5",
+    "faiss-cpu>=1.12.0",
+]

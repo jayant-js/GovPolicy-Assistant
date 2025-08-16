@@ -1,0 +1,64 @@
+project:
+  name: "PolicyRAG"
+  version: "0.1.0"
+  description: "Retrieval-Augmented Generation system for summarizing and querying Indian Government Policies and budget documents."
+  author: "Jayant Singhal"
+
+data:
+  loaders:
+    type: "pdf"
+    web_loader: "UnstructuredPDFLoader"
+    cache_dir: "data/raw" 
+splitters:
+  text_splitter: "RecursiveCharacterTextSplitter"
+  chunk_size: 1000
+  chunk_overlap: 150
+  clean_html: true
+  
+embeddings:
+  model_name: "sentence-transformers/all-mpnet-base-v2"
+  dimension: 768
+  normalize: true
+  batch_size: 32
+  device: 'cpu'
+
+vector_store: 
+  type: 'faiss'
+  persist_directory: "vectorstore"
+  top_k: 5
+
+retriever:
+  type: "contextual_compression"
+  top_k: 5
+  score_function: "cosine"
+  reranker: false
+
+llm:
+  provider: "groq"
+  model: "llama-3.3-70b-versatile"
+  temperature: 0.2
+  fallback_model: "openai/gpt-oss-20b"
+
+evaluation:
+  metrics: 
+    - "precision@k"
+    - "recall@k"
+    - "hit_rate"
+    - "semantic_similarity"
+    - "rogueL"
+
+deployment:
+  framework: "fastapi"
+  port: 8000
+  reload: true
+  log_level: "info"
+  dockerize: true
+
+logging:
+  level: "INFO"
+  log_to_file: true
+  file_path: "logs/policyrag.log"
+
+  monitoring: 
+    enable: true
+    tool: "MLflow"
