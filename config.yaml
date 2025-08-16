@@ -37,16 +37,7 @@ retriever:
 llm:
   provider: "groq"
   model: "llama-3.3-70b-versatile"
-  temperature: 0.2
-  fallback_model: "openai/gpt-oss-20b"
-
-evaluation:
-  metrics: 
-    - "precision@k"
-    - "recall@k"
-    - "hit_rate"
-    - "semantic_similarity"
-    - "rogueL"
+  temperature: 0.3
 
 deployment:
   framework: "fastapi"
@@ -59,7 +50,3 @@ logging:
   level: "INFO"
   log_to_file: true
   file_path: "logs/app.log" 
-
-  monitoring: 
-    enable: true
-    tool: "MLflow"
