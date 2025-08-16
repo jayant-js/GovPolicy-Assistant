@@ -11,18 +11,34 @@ import os
 
 config = load_config()
 logger = get_logger(__name__)
+from langchain.prompts import PromptTemplate
+
 prompt = PromptTemplate(
     template="""
-You are a knowledgeable financial assistant. Answer the user query **only using the information in the provided context**. 
-Be concise and precise. Do not make assumptions or add any information that is not in the context.
+You are a helpful and highly skilled financial analyst. Your tone should be professional, clear, and human. 
+Your task is to answer the user's question by synthesizing the key information from the provided financial documents. 
 
-If the context does not contain enough information to answer, respond with: "I do not have sufficient information to answer this."
+**Structure your response like a professional briefing note:**
+
+1.  **Summary First:** Begin with a concise paragraph that gives the main, bottom-line answer to the user's question.
+
+2.  **Key Details:** Follow the summary with the most important supporting details.
+    - Present these details as clear bullet points for readability.
+    - Use **bolding** for emphasis on important names, figures, or dates.
+    - **Consolidate information** if it's repeated in the documents. Do not state the same fact multiple times.
+
+3.  **Grounding and Integrity:**
+    - Every piece of information must come **exclusively** from the provided context.
+    - To ensure accuracy, you **must add a source citation** after each fact or figure.
+    - If you cannot find the answer in the context, simply state: "I do not have sufficient information to answer this."
 
 ### Context:
 {context}
 
 ### User Query:
 {input}
+
+### Briefing Note:
 """,
     input_variables=['context', 'input']
 )
@@ -64,7 +80,7 @@ class BudgetRAGInferencePipeline:
             logger.info(f"Loading existing FAISS vector store from {self.vectorstore_dir}")
             vector_store = FAISS.load_local(self.vectorstore_dir, embedder, allow_dangerous_deserialization=True)
             self.retriever = vector_store.as_retriever(
-                search_type='mmr', search_kwargs={'k': 5, 'lambda_mult': 0.25, 'fetch_k': 10}
+                search_type='mmr', search_kwargs={'k': 10, 'lambda_mult': 0.5, 'fetch_k': 20}
             )
         else:
             raise FileNotFoundError(f"No vector store found at {self.vectorstore_dir}. Please run training pipeline first.")
