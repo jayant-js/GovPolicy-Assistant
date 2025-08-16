@@ -15,7 +15,7 @@ def create_vectorstore(docs):
     vector_store = FAISS.from_documents(documents=docs, embedding=embedder)
     vector_store.save_local(persist_dir)
     logger.info(f"Created and saved FAISS vector store at {persist_dir}")   
-    logger.info('Creating retriever from vector store.')
-    retriever = vector_store.as_retriever(search_type='mmr', search_kwargs={'k':5, 'lambda_mult': 0.25, 'fetch_k':10})
+    logger.info('Creating retriever from vector store.')    
+    retriever = vector_store.as_retriever(search_type='mmr', search_kwargs={'k':5, 'lambda_mult': 0.25, 'fetch_k':15})
     logger.info('retriever created.')
     return retriever

@@ -9,6 +9,7 @@ data:
     type: "pdf"
     web_loader: "UnstructuredPDFLoader"
     cache_dir: "data/raw" 
+
 splitters:
   text_splitter: "RecursiveCharacterTextSplitter"
   chunk_size: 1000
@@ -57,7 +58,7 @@ deployment:
 logging:
   level: "INFO"
   log_to_file: true
-  file_path: "logs/policyrag.log"
+  file_path: "logs/app.log" 
 
   monitoring: 
     enable: true

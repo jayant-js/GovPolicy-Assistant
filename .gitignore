@@ -11,3 +11,5 @@ wheels/
 .env
 notebooks
 logs
+src/main.py
+src/train_vectorstore.py
