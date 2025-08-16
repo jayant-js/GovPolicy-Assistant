@@ -13,15 +13,19 @@ config = load_config()
 logger = get_logger(__name__)
 prompt = PromptTemplate(
     template="""
-    You are a financial assistant. Use the provided context to answer the query concisely.
-    If there is sufficient context to answer the query, then only give the response, otherwise say: Insufficient Context.
-    Context: \n
-    {context}
+You are a knowledgeable financial assistant. Answer the user query **only using the information in the provided context**. 
+Be concise and precise. Do not make assumptions or add any information that is not in the context.
 
-    Query:
-    {input}
-"""
-, input_variables=['context', 'input'])
+If the context does not contain enough information to answer, respond with: "I do not have sufficient information to answer this."
+
+### Context:
+{context}
+
+### User Query:
+{input}
+""",
+    input_variables=['context', 'input']
+)
 
 class BudgetRAGTrainingPipeline:
     def __init__(self, vectorstore_dir = config['vector_store']['persist_directory']):
@@ -58,7 +62,7 @@ class BudgetRAGInferencePipeline:
         embedder = create_embedder()
         if os.path.exists(self.vectorstore_dir) and os.listdir(self.vectorstore_dir):
             logger.info(f"Loading existing FAISS vector store from {self.vectorstore_dir}")
-            vector_store = FAISS.load_local(self.vectorstore_dir, embedder)
+            vector_store = FAISS.load_local(self.vectorstore_dir, embedder, allow_dangerous_deserialization=True)
             self.retriever = vector_store.as_retriever(
                 search_type='mmr', search_kwargs={'k': 5, 'lambda_mult': 0.25, 'fetch_k': 10}
             )
