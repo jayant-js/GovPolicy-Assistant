@@ -1,3 +1,0 @@
-Qdrant-"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.b39xt28KLo1u2HzF4DaPiE9nIgG7kylYbP3toZOTb7g"
-
-pinecone-"pcsk_3kUB6L_JvXVEnsBqfBCfTadU4CypWrpDYegFAd55iMMkgv14iFA9fP6miTNiRzUPQBuxMj"
