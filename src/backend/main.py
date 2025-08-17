@@ -35,7 +35,19 @@ def query_rag(query: QueryRequest, request: Request):
         inference_pipeline = request.app.state.pipeline
         result = inference_pipeline.query(question)
         answer = result.get("answer")
-        return {'question':question, 'answer':answer}   
+        source_docs = result.get("context", [])
+        formatted_sources = [
+            {
+                'page_content': doc.page_content,
+                'metadata':doc.metadata
+            }
+            for doc in source_docs
+        ]
+        return {
+            'question':question, 
+            'answer':answer, 
+            'source_documents':formatted_sources
+        }   
     except Exception as e:
         logger.error(f"Error querying RAG pipeline: {e}")
         raise HTTPException(status_code=500, detail=str(e))
