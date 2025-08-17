@@ -11,7 +11,7 @@ st.markdown(
     "Ask any question about the Union Budget 2025 and get clear, source-backed answers."
 )
 
-api_url = "http://localhost:8000/query"
+api_url = "https://policyrag.onrender.com/query"
 question = st.text_input(
     "Type your question here:", 
     placeholder="e.g., What are the new policy schemes in Budget 2025?"
