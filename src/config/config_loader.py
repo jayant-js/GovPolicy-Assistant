@@ -1,7 +1,7 @@
 import yaml
 from pathlib import Path
 
-BASE_DIR = Path(__file__).parent
+BASE_DIR = Path(__file__).parent.parent
 
 def load_config(path: str = f'{BASE_DIR}/config.yaml'):
     with open(path, 'r') as f:

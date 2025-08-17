@@ -2,8 +2,6 @@ import logging
 import sys
 from pathlib import Path
 
-BASE_DIR = Path(__file__).parent
-
 def setup_logging():
     logging.basicConfig(
         level=logging.INFO,
