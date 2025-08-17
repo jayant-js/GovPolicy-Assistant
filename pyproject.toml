@@ -20,10 +20,5 @@ dependencies = [
     "uvicorn>=0.35.0",
     "pytesseract>=0.3.13",
     "sentence-transformers>=5.1.0",
-]
-
-[project.optional-dependencies]
-frontend = [
-    "streamlit",
-    "requests"
+    "streamlit>=1.48.1",
 ]
