@@ -1,4 +1,4 @@
-# BudgetRAG (Policy Insights Assistant)
+# GovPolicy Assistant | AI-Powered Q&A and Insights on Government Policies
 
 **GovPolicy Assistant** is an AI-powered assistant built with **Retrieval-Augmented Generation (RAG)** that enables accurate, context-aware Q&A on **Budget 2025 documents**.  
 The system leverages **LangChain, FAISS, and Large Language Models (LLMs)**, deployed via **FastAPI** (backend) and **Streamlit** (frontend), to provide an interactive and scalable platform for exploring government policies.
