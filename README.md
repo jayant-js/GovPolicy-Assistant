@@ -26,18 +26,3 @@ The system leverages **LangChain, FAISS, and Large Language Models (LLMs)**, dep
 - **Uvicorn** – ASGI server for FastAPI  
 
 ---
-
-## 📂 Project Structure
-GovPolicy Assistant/
-│── backend/ # FastAPI backend
-│ ├── main.py # API endpoints
-│ ├── retrieval.py # FAISS retrieval logic
-│ ├── models/ # LLM integration wrappers
-│
-│── frontend/ # Streamlit app
-│ ├── app.py # Frontend interface
-│
-│── data/ # Policy documents (Budget 2025)
-│── requirements.txt # Python dependencies
-│── pyproject.toml # Project metadata
-│── README.md # Documentation
