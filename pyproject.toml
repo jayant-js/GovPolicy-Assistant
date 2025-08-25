@@ -1,8 +1,7 @@
 [project]
-name = "GovPolicy Assistant"
+name = "govpolicy-assistant"
 version = "0.1.0"
 description = "GovPolicy Assistant is a Retrieval-Augmented Generation (RAG) based assistant built with LangChain, FAISS, and LLMs, deployed using FastAPI and Streamlit to provide accurate, context-aware Q&A on Budget 2025 documents."
-"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -21,5 +20,4 @@ dependencies = [
     "uvicorn>=0.35.0",
     "pytesseract>=0.3.13",
     "sentence-transformers>=5.1.0",
-    "streamlit>=1.48.1",
 ]
