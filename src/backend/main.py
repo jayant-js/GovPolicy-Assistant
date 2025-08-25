@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+load_dotenv()
 from fastapi import FastAPI, HTTPException, Request
 from contextlib import asynccontextmanager
 from pipeline.rag_pipeline import BudgetRAGInferencePipeline
