@@ -1,9 +1,8 @@
 import yaml
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
-def load_config(path: str = f'{BASE_DIR}/config.yaml'):
+CONFIG_PATH = Path("/app/config.yaml")
+def load_config(path: Path = CONFIG_PATH):
     with open(path, 'r') as f:
         config = yaml.safe_load(f)
     return config

@@ -10,7 +10,7 @@ st.set_page_config(
 st.title("💰 PolicyRAG - Budget 2025 Assistant")
 st.markdown("Ask any question about the Union Budget 2025 and get clear, source-backed answers.")
 
-api_url = "https://policyrag.onrender.com/query"
+api_url = os.getenv("API_URL", "http://localhost:8000/query")
 
 def get_answer(question_text):
     try:

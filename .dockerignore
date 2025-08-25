@@ -3,5 +3,15 @@ __pycache__
 *.pyc
 notebooks
 
+.env
+.python-version
+uv.lock
+
+README.md
+
+.gitignore
+.git
+
+.dockerignore
 Dockerfile*
 docker-compose.yml

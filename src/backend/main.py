@@ -16,7 +16,7 @@ async def lifespan(app: FastAPI):
     yield
     logger.info('Application Shutdown')
 
-app = FastAPI(title='PolicyRAG', description='RAG-Based Financial Assistant', version='0.1.0', lifespan=lifespan)
+app = FastAPI(title='PolicyRAG', description='A RAG-based API for answering questions about government financial documents.', version='0.1.0', lifespan=lifespan)
 
 class QueryRequest(BaseModel):
     question: str = Field(..., description='Your question related to Budget 2025')
